@@ -39,6 +39,96 @@ export type Database = {
         };
         Relationships: [];
       };
+      resumes: {
+        Row: {
+          created_at: string;
+          file_name: string;
+          file_path: string;
+          file_size: number | null;
+          id: string;
+          is_primary: boolean;
+          mime_type: string | null;
+          parsed_data: Json | null;
+          user_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          file_name: string;
+          file_path: string;
+          file_size?: number | null;
+          id?: string;
+          is_primary?: boolean;
+          mime_type?: string | null;
+          parsed_data?: Json | null;
+          user_id: string;
+        };
+        Update: {
+          created_at?: string;
+          file_name?: string;
+          file_path?: string;
+          file_size?: number | null;
+          id?: string;
+          is_primary?: boolean;
+          mime_type?: string | null;
+          parsed_data?: Json | null;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
+      user_profiles: {
+        Row: {
+          additional_details: string[];
+          certifications: Json;
+          created_at: string;
+          education: Json;
+          headline: string | null;
+          links: Json;
+          location: string | null;
+          onboarding_completed_at: string | null;
+          phone: string | null;
+          professional_summary: string | null;
+          projects: Json;
+          skills: string[];
+          updated_at: string;
+          user_id: string;
+          work_experience: Json;
+        };
+        Insert: {
+          additional_details?: string[];
+          certifications?: Json;
+          created_at?: string;
+          education?: Json;
+          headline?: string | null;
+          links?: Json;
+          location?: string | null;
+          onboarding_completed_at?: string | null;
+          phone?: string | null;
+          professional_summary?: string | null;
+          projects?: Json;
+          skills?: string[];
+          updated_at?: string;
+          user_id: string;
+          work_experience?: Json;
+        };
+        Update: {
+          additional_details?: string[];
+          certifications?: Json;
+          created_at?: string;
+          education?: Json;
+          headline?: string | null;
+          links?: Json;
+          location?: string | null;
+          onboarding_completed_at?: string | null;
+          phone?: string | null;
+          professional_summary?: string | null;
+          projects?: Json;
+          skills?: string[];
+          updated_at?: string;
+          user_id?: string;
+          work_experience?: Json;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;

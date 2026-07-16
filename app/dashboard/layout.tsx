@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { DashboardSidebar } from "@/components/dashboard/dashboard-sidebar";
+import { OnboardingResumeDialog } from "@/components/onboarding/onboarding-resume-dialog";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { createClient } from "@/lib/supabase/server";
@@ -17,6 +18,21 @@ export default async function DashboardLayout({
   if (!user) {
     redirect("/login");
   }
+
+  const [{ data: profile }, { data: resumes }] = await Promise.all([
+    supabase
+      .from("user_profiles")
+      .select("onboarding_completed_at")
+      .eq("user_id", user.id)
+      .maybeSingle(),
+    supabase
+      .from("resumes")
+      .select("id")
+      .eq("user_id", user.id)
+      .limit(1),
+  ]);
+
+  const needsOnboarding = !profile?.onboarding_completed_at && !resumes?.length;
 
   return (
     <TooltipProvider>
@@ -36,6 +52,7 @@ export default async function DashboardLayout({
           </header>
           <main className="flex flex-1 flex-col">{children}</main>
         </SidebarInset>
+        {needsOnboarding && <OnboardingResumeDialog />}
       </SidebarProvider>
     </TooltipProvider>
   );
