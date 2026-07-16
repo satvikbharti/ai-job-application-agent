@@ -81,14 +81,14 @@ export function DashboardSidebar() {
           href="/dashboard"
           className="flex h-10 items-center gap-2 overflow-hidden rounded-md px-1.5 outline-none ring-sidebar-ring transition-colors hover:bg-sidebar-accent focus-visible:ring-2"
         >
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-sm">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-sm">
             <HugeiconsIcon
               icon={Briefcase01Icon}
               strokeWidth={2}
-              className="size-4"
+              className="size-5"
             />
           </span>
-          <span className="min-w-0 text-sm font-semibold tracking-tight group-data-[collapsible=icon]:hidden">
+          <span className="min-w-0 text-base font-semibold tracking-tight group-data-[collapsible=icon]:hidden">
             JobBuddy AI
           </span>
         </Link>
@@ -105,14 +105,14 @@ export function DashboardSidebar() {
                     render={<Link href={item.href} />}
                     tooltip={item.title}
                     isActive={isActivePath(pathname, item.href)}
-                    className="h-9 text-sm"
+                    className="h-11 px-2.5 text-[0.95rem]"
                   >
                     <HugeiconsIcon
                       icon={item.icon}
                       strokeWidth={2}
-                      className="size-4"
+                      className="size-5"
                     />
-                    <span>{item.title}</span>
+                    <span className="font-medium">{item.title}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -155,14 +155,14 @@ export function DashboardSidebar() {
                 render={<Link href={item.href} />}
                 tooltip={item.title}
                 isActive={isActivePath(pathname, item.href)}
-                className="h-9 text-sm"
+                className="h-11 px-2.5 text-[0.95rem]"
               >
                 <HugeiconsIcon
                   icon={item.icon}
                   strokeWidth={2}
-                  className="size-4"
+                  className="size-5"
                 />
-                <span>{item.title}</span>
+                <span className="font-medium">{item.title}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
